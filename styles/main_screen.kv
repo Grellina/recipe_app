@@ -1,0 +1,52 @@
+#:kivy 2.3.1
+
+<MainScreen>:
+    name: 'main'
+    canvas.before:
+        Color:
+            rgba: .85, .60, .85, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+
+    GridLayout:
+        cols: 1
+        BoxLayout:
+
+            #size_hint_y: .9
+            orientation: 'vertical'
+
+            Label:
+                size_hint_y: .3
+                text: 'Главная страница'
+
+
+            GridLayout:
+                cols: 2
+                rows: 2
+                spacing: 100
+                padding: 50
+
+                size_hint_y: .9
+
+                Button:
+                    text: 'button'
+                    background_color: 1, 0, 0, 1
+                    size_hint_x: .9
+                    size_hint_y: .9
+
+                Label:
+                    text: 'recipe'
+
+
+                Button:
+                    text: 'button'
+                    background_color: 0, 1, 0, 1
+
+                Label:
+                    text: 'recipe'
+
+
+
+
