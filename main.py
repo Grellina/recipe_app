@@ -10,7 +10,8 @@ class Recipe(Widget):
 class RecipeApp(App):
     def build(self):
         sm = ScreenManager()
-        Builder.load_file('styles/backgrounds.kv')
+        Builder.load_file('styles/main_screen.kv')
+        Builder.load_file('styles/recipe_screen.kv')
         main_screen = MainScreen(name='main')
         recipe_widget = Recipe()
         main_screen.add_widget(recipe_widget)
@@ -20,6 +21,8 @@ class RecipeApp(App):
 class MainScreen(Screen):
     pass
 
+class RecipeScreen(Screen):
+    pass
 
 if __name__ == '__main__':
     RecipeApp().run()
