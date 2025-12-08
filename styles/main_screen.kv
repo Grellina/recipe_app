@@ -25,29 +25,35 @@
             GridLayout:
                 cols: 2
                 rows: 2
-                spacing: 100
+                spacing: 10
                 padding: 50
 
                 size_hint_y: .9
 
-                Button:
-                    text: 'button'
-                    background_color: 1, 0, 0, 1
-                    size_hint_x: .9
-                    size_hint_y: .9
+                IconButton:
+                    #text: 'button'
+                    #background_color: 0, 0, 0, 0
+                    source: 'static/image/free-icon-swiss-roll-6775854.png'
+                    size_hint: None, None
+                    size: 170.6, 170.6
+
+
                     on_press: root.manager.current = 'recipe'
 
                 Label:
-                    text: 'recipe'
+                    text: 'меренговый рулет'
 
 
-                Button:
-                    text: 'button'
-                    background_color: 0, 1, 0, 1
+                IconButton:
+                    #text: 'button'
+                    #background_color: 0, 0, 0, 0
                     on_press: root.manager.current = 'recipe'
+                    source: 'static/image/free-icon-cheesecake-1923460.png'
+                    size_hint: None, None
+                    size: 170.6, 170.6
 
                 Label:
-                    text: 'recipe'
+                    text: 'чизкейк'
 
 
 

@@ -4,6 +4,7 @@ from kivy.lang import Builder
 
 Builder.load_file('styles/main_screen.kv')
 Builder.load_file('styles/recipe_screen.kv')
+Builder.load_file('components/icon_button.kv')
 
 
 
