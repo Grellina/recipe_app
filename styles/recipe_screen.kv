@@ -1,0 +1,33 @@
+#:kivy 2.3.1
+
+<RecipeScreen>:
+    name: 'recipe'
+    canvas.before:
+        Color:
+            rgba: .68, .34, .85, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    Button:
+        text: 'Вернуться к списку рецептов'
+        on_press: root.manager.current = 'main'
+        padding: 50
+        size_hint: .3, .1
+        pos_hint: {'center_x':.17, 'center_y':.9}
+
+    BoxLayout:
+        orientation: 'vertical'
+
+        Label:
+            text: 'Название рецепта'
+
+        Label:
+            text: 'Классические граммовки'
+
+        Label:
+            text: 'Кастомные граммовки'
+
+        Label:
+            text: 'Рецепт'
+
