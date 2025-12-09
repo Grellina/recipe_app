@@ -1,4 +1,5 @@
 from kivy.app import App
+from kivy.properties import StringProperty
 from kivy.uix.screenmanager import Screen, ScreenManager, FadeTransition
 from kivy.lang import Builder
 
@@ -19,11 +20,17 @@ class RecipeApp(App):
         sm.transition = FadeTransition(duration= 0.3)
         return sm
 
+    def open_recipe(self, text):
+        recipe_screen = self.root.get_screen('recipe')
+        recipe_screen.label_text = text
+        self.root.current = 'recipe'
+
 class MainScreen(Screen):
     pass
 
 class RecipeScreen(Screen):
-    pass
+    label_text = StringProperty('')
+
 
 if __name__ == '__main__':
     RecipeApp().run()
