@@ -31,28 +31,29 @@
                 size_hint_y: .9
 
                 IconButton:
-                    #text: 'button'
                     #background_color: 0, 0, 0, 0
                     source: 'static/image/free-icon-swiss-roll-6775854.png'
                     size_hint: None, None
                     size: 170.6, 170.6
 
+                    on_release: app.open_recipe(meringue_roll_label.text)
 
-                    on_press: root.manager.current = 'recipe'
 
                 Label:
+                    id: meringue_roll_label
                     text: 'меренговый рулет'
 
 
                 IconButton:
-                    #text: 'button'
                     #background_color: 0, 0, 0, 0
-                    on_press: root.manager.current = 'recipe'
                     source: 'static/image/free-icon-cheesecake-1923460.png'
                     size_hint: None, None
                     size: 170.6, 170.6
 
+                    on_release: app.open_recipe(cheesecake_label.text)
+
                 Label:
+                    id: cheesecake_label
                     text: 'чизкейк'
 
 
