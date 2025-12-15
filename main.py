@@ -3,7 +3,9 @@ from kivy.properties import StringProperty, ObjectProperty
 from kivy.uix.screenmanager import Screen, ScreenManager, FadeTransition
 from kivy.lang import Builder
 from abc import ABC, abstractmethod
-import recipes.meringue_roll
+from recipes import meringue_roll
+
+print(Builder.files)
 
 Builder.load_file('styles/main_screen.kv')
 Builder.load_file('styles/recipe_screen.kv')
@@ -31,13 +33,19 @@ class MainScreen(Screen):
     pass
 
 class RecipeScreen(Screen):
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.meringue_roll = meringue_roll.MeringueRoll(**kwargs)
     label_text = StringProperty('')
     recipe = ObjectProperty(None)
 
 
+
+
 class RecipeBase(ABC):
 
-    def __init__(self, name, *args, **kwargs):
+    def __init__(self, name=None, *args, **kwargs):
         self.base_ingredients = {**kwargs}
         self.current_ingredients = {**kwargs}
         self.name = name

@@ -27,7 +27,36 @@
             text: 'Классические граммовки'
 
         Label:
-            text: 'Кастомные граммовки'
+            text: 'Кастомные граммовки \n \n Выберите ингредиент'
+
+            id: custom_label
+
+        BoxLayout:
+            size_hint: None, None
+            size: 250, 70
+            pos_hint: {'center_x':.5, 'center_y':.9}
+            spacing: 10
+            Button:
+                text: 'белки'
+                background_color: 1, 1, 1, 1
+                on_press: self.background_color = (0, 1, 0, 1)
+                on_release: root.meringue_roll.recalculate_ingredients(egg_white=factor.text)
+            Button:
+                text: 'сахар'
+                background_color: 1, 1, 1, 1
+                on_press: self.background_color = (0, 1, 0, 1)
+            Button:
+                text: 'крахмал'
+                background_color: 1, 1, 1, 1
+                on_press: self.background_color = (0, 1, 0, 1)
+
+        TextInput:
+            id: factor
+            size_hint: None, None
+            size: 250, 70
+            pos_hint: {'center_x':.5, 'center_y':.9}
+            hint_text: 'укажите вес ингредиента для пересчёта'
+            input_filter: 'float'
 
         Label:
             text: 'Рецепт'

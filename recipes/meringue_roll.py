@@ -1,10 +1,10 @@
-from main import RecipeBase
 from copy import deepcopy
 
 
-class MeringueRoll(RecipeBase):
-    def __init__(self, name, *args, **kwargs):
-        super().__init__(name, *args, **kwargs)
+
+
+class MeringueRoll():
+    def __init__(self, name=None,**kwargs):
         self.base_ingredients = {'egg_white': 190, 'sugar': 250, 'starch': 25}
         self.base_ingredients_list = ['egg_white', 'sugar', 'starch']
         self.current_ingredients = {**kwargs}
@@ -19,7 +19,8 @@ class MeringueRoll(RecipeBase):
         my_list = deepcopy(self.base_ingredients_list)  #копия ингредиентов, с удалённым перерасчётным
         my_list.remove(ingredient)
         for i in my_list:
-            i_add = self.base_ingredients[i] * mass / self.base_ingredients[i]
+
+            i_add = round((self.base_ingredients[i] * mass) / self.base_ingredients[ingredient], 1)
             self.ingredients.update({i: i_add})
         self.ingredients.update(kwargs)
 
@@ -34,3 +35,6 @@ class MeringueRoll(RecipeBase):
     def get_ingredients(self):
 
         pass
+
+roll = MeringueRoll(egg_white=200)
+roll.recalculate_ingredients(egg_white=200)
