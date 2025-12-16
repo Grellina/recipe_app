@@ -1,6 +1,8 @@
 #:kivy 2.3.1
 
 <RecipeScreen>:
+
+    recipe_input: result.__self__
     name: 'recipe'
     canvas.before:
         Color:
@@ -40,15 +42,17 @@
                 text: 'белки'
                 background_color: 1, 1, 1, 1
                 on_press: self.background_color = (0, 1, 0, 1)
-                on_release: root.meringue_roll.recalculate_ingredients(egg_white=factor.text)
+                on_release: root.recalculate(egg_white=int(factor.text))
             Button:
                 text: 'сахар'
                 background_color: 1, 1, 1, 1
                 on_press: self.background_color = (0, 1, 0, 1)
+                on_release: root.recalculate(sugar=int(factor.text))
             Button:
                 text: 'крахмал'
                 background_color: 1, 1, 1, 1
                 on_press: self.background_color = (0, 1, 0, 1)
+                on_release: root.recalculate(starch=int(factor.text))
 
         TextInput:
             id: factor
@@ -57,6 +61,13 @@
             pos_hint: {'center_x':.5, 'center_y':.9}
             hint_text: 'укажите вес ингредиента для пересчёта'
             input_filter: 'float'
+        TextInput:
+            id: result
+            size_hint: None, None
+            size: 250, 150
+            pos_hint: {'center_x':.5, 'center_y':.9}
+            #text: root.meringue_roll
+            hint_text: 'результат'
 
         Label:
             text: 'Рецепт'
