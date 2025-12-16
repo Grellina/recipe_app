@@ -11,6 +11,7 @@ class MeringueRoll(RecipeBase):
         self.current_ingredients = {**kwargs}
         self.ingredients = {}
         self.id = 'meringue_roll'
+        self.name = 'Меренговый рулет'
 
 
     def recalculate_ingredients(self, **kwargs):

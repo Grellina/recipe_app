@@ -4,6 +4,7 @@ class Cheesecake(RecipeBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.id ='cheesecake'
+        self.name = 'Чизкейк'
 
     def get_base_ingredients(self):
         return self.base_ingredients_list
