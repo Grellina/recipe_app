@@ -1,5 +1,6 @@
 from kivy.app import App
 from kivy.properties import StringProperty, ObjectProperty
+from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import Screen, ScreenManager, FadeTransition
 from kivy.lang import Builder
 
@@ -8,9 +9,10 @@ from screens.recipe_detail import RecipeScreen
 
 
 
-Builder.load_file('screens/main_screen.kv')
+Builder.load_file('screens/menu_screen.kv')
 Builder.load_file('screens/recipe_screen.kv')
 Builder.load_file('components/icon_button.kv')
+
 
 
 
@@ -21,19 +23,19 @@ class RecipeApp(App):
 
     def build_screen_manager(self):
         sm = ScreenManager()
-        sm.add_widget(MainScreen(name='main'))
+        sm.add_widget(MenuScreen(name='menu'))
         sm.add_widget(RecipeScreen(name='recipe'))
         sm.transition = FadeTransition(duration=0.3)
         return sm
 
 
-    def open_recipe(self, text):
+    def open_recipe(self, recipe_id):
         recipe_screen = self.root.get_screen('recipe')
-        recipe_screen.label_text = text
-        #recipe_screen.recipe = self.recipes[recipe_id]      #recipe - свойство экрана RecipeScreen
+        recipe_screen.label_text = self.recipes[recipe_id].name
+        recipe_screen.recipe = self.recipes[recipe_id]      #recipe - свойство экрана RecipeScreen
         self.root.current = 'recipe'
 
-class MainScreen(Screen):
+class MenuScreen(Screen):
     pass
 
 
