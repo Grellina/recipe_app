@@ -6,8 +6,9 @@ class Cheesecake(RecipeBase):
         super().__init__(**kwargs)
         self.id ='cheesecake'
         self.name = 'Чизкейк'
-        self.base_ingredients = {'cookies': 300,'butter': 100, 'white_cheese': 600, 'sugar': 150, 'eggs': 3, 'cream': 200}
+        self.base_ingredients = {'cookies': 300,'butter': 100, 'white_cheese': 600, 'sugar': 150, 'eggs': 250, 'cream': 200}
         self.base_ingredients_list = ['cookies', 'butter', 'white_cheese', 'sugar', 'eggs', 'cream']
+        self.ingredients_dict = {'cookies': 'печенье', 'butter': 'масло', 'white_cheese': 'сливочный сыр', 'sugar': 'сахар', 'eggs': 'яйца', 'cream': 'сливки'}
         self.current_ingredients = {**kwargs}
         self.ingredients = {}
 
@@ -30,4 +31,12 @@ class Cheesecake(RecipeBase):
         return self
 
     def __str__(self):
-        return self.ingredients
+        if not self.ingredients:
+            return self.base_ingredients
+        else:
+            return (f'необходимые ингредиенты: печенье = {self.ingredients["cookies"]} \n'
+                    f'масло = {self.ingredients["butter"]} \n '
+                    f'сливочный сыр = {self.ingredients["white_cheese"]} \n '
+                    f'сахар = {self.ingredients["sugar"]} \n '
+                    f'яйца = {self.ingredients["eggs"]} \n '
+                    f'сливки = {self.ingredients["cream"]} \n ')

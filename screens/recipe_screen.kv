@@ -3,7 +3,7 @@
 <RecipeScreen>:
 
     recipe_input: result.__self__
-    name: 'recipe'
+    name: 'recipe_detail'
     canvas.before:
         Color:
             rgba: .68, .34, .85, 1
@@ -34,25 +34,13 @@
             id: custom_label
 
         BoxLayout:
-            size_hint: None, None
-            size: 250, 70
+            id: actions_box
+            #size_hint: None, None
+            #size: 300, 70
             pos_hint: {'center_x':.5, 'center_y':.9}
             spacing: 10
-            Button:
-                text: 'белки'
-                background_color: 1, 1, 1, 1
-                on_press: self.background_color = (0, 1, 0, 1)
-                on_release: root.recalculate(egg_white=int(factor.text))
-            Button:
-                text: 'сахар'
-                background_color: 1, 1, 1, 1
-                on_press: self.background_color = (0, 1, 0, 1)
-                on_release: root.recalculate(sugar=int(factor.text))
-            Button:
-                text: 'крахмал'
-                background_color: 1, 1, 1, 1
-                on_press: self.background_color = (0, 1, 0, 1)
-                on_release: root.recalculate(starch=int(factor.text))
+            padding: 20
+
 
         TextInput:
             id: factor

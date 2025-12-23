@@ -1,13 +1,23 @@
 from copy import deepcopy
-from .base_recipes import RecipeBase
+from recipes.base_recipes import RecipeBase
 
 
 
 class MeringueRoll(RecipeBase):
+
+    actions = [
+        {
+            'id': 'recalculate_ingredients',
+            'title': 'перерасчёт ингредиентов',
+            'method': 'recalculate_ingredients',
+        }
+    ]
+
     def __init__(self, name=None,**kwargs):
         super().__init__(**kwargs)
         self.base_ingredients = {'egg_white': 190, 'sugar': 250, 'starch': 25}
-        self.base_ingredients_list = ['egg_white', 'sugar', 'starch']
+        self.ingredients_list = ['egg_white', 'sugar', 'starch']
+        self.ingredients_dict = {'egg_white':'белки', 'sugar':'сахар', 'starch': 'крахмал'}
         self.current_ingredients = {**kwargs}
         self.ingredients = {}
         self.id = 'meringue_roll'
@@ -20,7 +30,7 @@ class MeringueRoll(RecipeBase):
             raise ValueError('recalculate_ingredients принимает только 1 аргумент')
         ingredient, mass = next(iter(kwargs.items()))
         mass = int(mass)
-        my_list = deepcopy(self.base_ingredients_list)  #копия ингредиентов, с удалённым перерасчётным
+        my_list = deepcopy(self.ingredients_list)  #копия ингредиентов, с удалённым перерасчётным
         my_list.remove(ingredient)
         for i in my_list:
 
