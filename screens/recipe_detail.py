@@ -39,3 +39,11 @@ class RecipeScreen(Screen):
         self.ids.result.text = str(result)
         return result
 
+
+
+
+
+    def clear_form(self):
+        print('вызов')
+        self.ids.result.text = ''
+        self.ids.factor.text = ''

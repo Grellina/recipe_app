@@ -2,7 +2,6 @@
 
 <RecipeScreen>:
 
-    recipe_input: result.__self__
     name: 'recipe_detail'
     canvas.before:
         Color:
@@ -12,17 +11,20 @@
             size: self.size
 
     Button:
+        id: back
         text: 'Вернуться к списку рецептов'
         on_press: root.manager.current = 'menu'
+        on_release: root.clear_form()
         padding: 50
         size_hint: .3, .1
         pos_hint: {'center_x':.17, 'center_y':.9}
 
     BoxLayout:
+        id: detail
         orientation: 'vertical'
 
         Label:
-            id: 'recipe_name'
+            id: recipe_name
             text: root.label_text
 
         Label:
@@ -52,9 +54,8 @@
         TextInput:
             id: result
             size_hint: None, None
-            size: 250, 150
+            size: 250, 160
             pos_hint: {'center_x':.5, 'center_y':.9}
-            #text: root.meringue_roll
             hint_text: 'результат'
 
         Label:

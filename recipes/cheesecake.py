@@ -7,36 +7,27 @@ class Cheesecake(RecipeBase):
         self.id ='cheesecake'
         self.name = 'Чизкейк'
         self.base_ingredients = {'cookies': 300,'butter': 100, 'white_cheese': 600, 'sugar': 150, 'eggs': 250, 'cream': 200}
-        self.base_ingredients_list = ['cookies', 'butter', 'white_cheese', 'sugar', 'eggs', 'cream']
+        self.ingredients_list = ['cookies', 'butter', 'white_cheese', 'sugar', 'eggs', 'cream']
         self.ingredients_dict = {'cookies': 'печенье', 'butter': 'масло', 'white_cheese': 'сливочный сыр', 'sugar': 'сахар', 'eggs': 'яйца', 'cream': 'сливки'}
         self.current_ingredients = {**kwargs}
         self.ingredients = {}
 
     def get_base_ingredients(self):
-        return self.base_ingredients_list
+        return (f'необходимые ингредиенты: печенье = {self.base_ingredients["cookies"]} г. \n'
+                    f'масло = {self.base_ingredients["butter"]} г. \n '
+                    f'сливочный сыр = {self.base_ingredients["white_cheese"]} г. \n '
+                    f'сахар = {self.base_ingredients["sugar"]} г. \n '
+                    f'яйца = {self.base_ingredients["eggs"]} г. \n '
+                    f'сливки = {self.base_ingredients["cream"]} г. \n ')
 
-    def recalculate_ingredients(self, **kwargs):
-        '''перерасчёт всех ингредиентов относительно изменения одного из них'''
-        if len(kwargs) != 1:
-            raise ValueError('recalculate_ingredients принимает только 1 аргумент')
-        ingredient, mass = next(iter(kwargs.items()))
-        mass = int(mass)
-        my_list = deepcopy(self.base_ingredients_list)  #копия ингредиентов, с удалённым перерасчётным
-        my_list.remove(ingredient)
-        for i in my_list:
-
-            i_add = round((self.base_ingredients[i] * mass) / self.base_ingredients[ingredient], 1)
-            self.ingredients.update({i: i_add})
-        self.ingredients.update(kwargs)
-        return self
 
     def __str__(self):
         if not self.ingredients:
             return self.base_ingredients
         else:
-            return (f'необходимые ингредиенты: печенье = {self.ingredients["cookies"]} \n'
-                    f'масло = {self.ingredients["butter"]} \n '
-                    f'сливочный сыр = {self.ingredients["white_cheese"]} \n '
-                    f'сахар = {self.ingredients["sugar"]} \n '
-                    f'яйца = {self.ingredients["eggs"]} \n '
-                    f'сливки = {self.ingredients["cream"]} \n ')
+            return (f'необходимые ингредиенты: печенье = {self.ingredients["cookies"]} г. \n'
+                    f'масло = {self.ingredients["butter"]} г. \n '
+                    f'сливочный сыр = {self.ingredients["white_cheese"]} г. \n '
+                    f'сахар = {self.ingredients["sugar"]} г. \n '
+                    f'яйца = {self.ingredients["eggs"]} г. \n '
+                    f'сливки = {self.ingredients["cream"]} г. \n ')
