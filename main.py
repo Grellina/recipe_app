@@ -3,11 +3,13 @@ from kivy.properties import StringProperty, ObjectProperty
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import Screen, ScreenManager, FadeTransition
 from kivy.lang import Builder
+from db.base import engine, Base
+from db import models
 
 from recipes import load_recipes
 from screens.recipe_detail import RecipeScreen
 
-
+Base.metadata.create_all(bind=engine)
 
 Builder.load_file('screens/menu_screen.kv')
 Builder.load_file('screens/recipe_screen.kv')
