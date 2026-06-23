@@ -27,7 +27,7 @@ class MochiFilling(RecipeBase):
                     f'сливки 33 % = {self.ingredients["cream_33"]} г. \n '
                     f'желатин = {self.ingredients["gelatin"]} г. \n '
                     f'вода = {self.ingredients["water"]} г. \n '
-                    f'кол-во порций = {self.ingredients["portions"]} г. \n ')
+                    f'кол-во порций = {self.ingredients["portions"]} \n ')
 
 
     def get_base_ingredients(self):
@@ -40,4 +40,4 @@ class MochiFilling(RecipeBase):
                 f'сливки 33% = {self.base_ingredients["cream_33"]} г. \n '
                 f'желатин = {self.base_ingredients["gelatin"]} г. \n '
                 f'вода = {self.base_ingredients["water"]} г. \n '
-                f'кол-во порций = {self.base_ingredients["portions"]} г. \n ')
+                f'кол-во порций = {self.base_ingredients["portions"]} \n ')

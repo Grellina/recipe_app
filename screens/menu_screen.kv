@@ -4,7 +4,7 @@
     name: 'menu'
     canvas.before:
         Color:
-            rgba: .85, .60, .85, 1
+            rgba: .96, .91, .84, 1
         Rectangle:
             pos: self.pos
             size: self.size
@@ -21,40 +21,17 @@
                 size_hint_y: .3
                 text: 'Главная страница'
 
+            ScrollView:
+                GridLayout:
+                    id: recipes_grid
+                    cols: 3
+                    spacing: 10
+                    padding: 20
 
-            GridLayout:
-                cols: 2
-                rows: 2
-                spacing: 10
-                padding: 50
-
-                size_hint_y: .9
-
-                IconButton:
-                    #background_color: 0, 0, 0, 0
-                    source: app.static("static/image/free-icon-swiss-roll-6775854.png")
-                    size_hint: None, None
-                    size: 170.6, 170.6
-
-                    on_release: app.open_recipe("meringue_roll")
+                    size_hint_y: None
+                    height: self.minimum_height
 
 
-                Label:
-                    id: meringue_roll_label
-                    text: 'меренговый рулет'
-
-
-                IconButton:
-                    #background_color: 0, 0, 0, 0
-                    source: app.static('static/image/free-icon-cheesecake-1923460.png')
-                    size_hint: None, None
-                    size: 170.6, 170.6
-
-                    on_release: app.open_recipe("cheesecake")
-
-                Label:
-                    id: cheesecake_label
-                    text: 'чизкейк'
 
 
 
