@@ -7,6 +7,8 @@ from kivy.uix.screenmanager import Screen, ScreenManager, FadeTransition
 from kivy.lang import Builder
 from db.base import engine, Base
 from db import models
+from components.icon_button import IconButton
+from components.recipe_card import RecipeCard
 import os
 import sys
 
@@ -25,6 +27,7 @@ def resource_path(relative_path):
 Builder.load_file(resource_path('screens/menu_screen.kv'))
 Builder.load_file(resource_path('screens/recipe_screen.kv'))
 Builder.load_file(resource_path('components/icon_button.kv'))
+Builder.load_file(resource_path('components/recipe_card.kv'))
 
 
 
@@ -51,7 +54,23 @@ class RecipeApp(App):
         self.root.current = 'recipe_detail'
 
 class MenuScreen(Screen):
-    pass
+    def on_enter(self):
+        self.load_recipes()
+
+    def load_recipes(self):
+        app = App.get_running_app()
+        grid = self.ids.recipes_grid
+        grid.clear_widgets()
+
+        for recipe_id, recipe in app.recipes.items():
+
+            button = IconButton(source=app.static('static/image/' + recipe_id + '.png'),
+                                            size_hint=(None, None),
+                                            size=(170, 170))
+            button.bind(
+                on_release=lambda btn, r=recipe_id: app.open_recipe(r)
+            )
+            grid.add_widget(button)
 
 
 
