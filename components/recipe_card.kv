@@ -1,0 +1,30 @@
+<RecipeCard>:
+
+    orientation: "vertical"
+
+    size_hint: None, None
+    size: 170, 170
+
+    padding: 10
+    spacing: 5
+
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [20]
+
+
+    Image:
+
+        source: root.image
+        size_hint_y: .75
+
+
+    Label:
+        text: root.title
+        size_hint_y: .25
+        color: .2, .2, .2, 1

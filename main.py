@@ -8,6 +8,7 @@ from kivy.lang import Builder
 from db.base import engine, Base
 from db import models
 from components.icon_button import IconButton
+from components.recipe_card import RecipeCard
 import os
 import sys
 
@@ -25,7 +26,8 @@ def resource_path(relative_path):
 
 Builder.load_file(resource_path('screens/menu_screen.kv'))
 Builder.load_file(resource_path('screens/recipe_screen.kv'))
-main_button = Builder.load_file(resource_path('components/icon_button.kv'))
+Builder.load_file(resource_path('components/icon_button.kv'))
+Builder.load_file(resource_path('components/recipe_card.kv'))
 
 
 
